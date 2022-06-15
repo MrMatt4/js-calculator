@@ -58,7 +58,7 @@ function handleNumbers() {
     else if (storedSecondNum == null && storedOperator && storedOperator != "equal") {
         displayValue.textContent = number;
         storedSecondNum = 0;
-        displayStoredOperation.textContent = `${storedFirstNum} ${storedOperator}`;
+        displayStoredOperation.textContent = `${storedFirstNum} ${getOperator(storedOperator)}`;
     } else {
         if (displayValue.textContent.includes(".") && number == ".") {
             return;
@@ -69,6 +69,15 @@ function handleNumbers() {
     inputNumber = Number(displayValue.textContent);
     };
 
+function getOperator(operator) {
+    for (let i = 0; i < operators.length; i++) {
+        if (operators.item(i).dataset.operator == operator)
+        {
+            return operators.item(i).textContent;
+        }
+    }
+};
+
 function handleOperators() {
     removeActiveClass();
     const operator = this.dataset.operator;
@@ -77,6 +86,7 @@ function handleOperators() {
     if (storedOperator == "equal") {
         storedFirstNum = inputNumber;
     }
+    // does calculation
     if (storedFirstNum != null && acceptedOperators.includes(storedOperator) && operator == "equal") {
             removeActiveClass();
             storedSecondNum = inputNumber;
@@ -105,6 +115,7 @@ function handleOperators() {
                 inputNumber = displayValue.textContent.slice(0, -1);
                 displayValue.textContent = inputNumber;
             }
+    // prepares for second operand after first and operator have been selected
     } else if (operator != "equal"){
             removeActiveClass();
             this.classList.add("active");
@@ -112,7 +123,7 @@ function handleOperators() {
             if (!storedFirstNum) {
                 storedFirstNum = inputNumber;
             }
-            displayStoredOperation.textContent = `${storedFirstNum} ${storedOperator}`
+            displayStoredOperation.textContent = `${storedFirstNum} ${getOperator(storedOperator)}`
     }
     };
 

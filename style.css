@@ -32,7 +32,6 @@ body {
     padding: 0 5px;
     text-align: right;
     font-size: 2rem;
-    overflow: clip;
     height: 100%;
 }
 
@@ -130,6 +129,7 @@ button[data-operator="equal"] {
     align-items: flex-end;
     background-color: azure;
     height: 67px;
+    overflow: clip;
 }
 
 .container {

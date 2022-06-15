@@ -58,6 +58,9 @@ function handleOperators() {
     const operator = this.dataset.operator;
     const acceptedOperators = ["add", "subtract", "divide", "multiply"];
     displayError.textContent = "";
+    if (storedOperator == "equal") {
+        storedFirstNum = inputNumber;
+    }
     if (storedFirstNum != null && acceptedOperators.includes(storedOperator) && operator == "equal") {
             removeActiveClass();
             storedSecondNum = inputNumber;

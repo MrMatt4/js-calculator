@@ -7,6 +7,10 @@
     --number-bg: #1E88E5; 
 }
 
+body {
+    box-sizing: border-box;
+}
+
 .calculator {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -23,19 +27,22 @@
 }
 
 .output {
-    grid-area: header;
-    width: 90%;
-    padding: 5px 0;
-    text-align: center;
-    background-color: azure;
+    padding: 0 5px;
+    text-align: right;
     font-size: 2rem;
     overflow: clip;
+    height: 100%;
+}
+
+.stored-operation {
+    margin: 5px;
 }
 
 .numbers-container {
     grid-area: numbers;
+    width: 90%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: 
     "one two three"
@@ -59,7 +66,7 @@ button {
     line-height: 1.2;
     white-space: nowrap;
     text-decoration: none;
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem 0.5rem;
     cursor: pointer;
 }
 
@@ -73,6 +80,7 @@ button {
 
 .operators-container {
     grid-area: operators;
+    width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -106,6 +114,23 @@ button[data-operator="equal"] {
     .calculator {
         width: 66%;
     }
+}
+
+.display {
+    grid-area: header;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: azure;
+    height: 67px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
  
 

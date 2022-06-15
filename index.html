@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<div class="container">
     <div class="calculator">
-        <label class="output">0</label>
+        <div class="display">
+            <label class="stored-operation"></label>
+            <label class="output">0</label>
+        </div>
         <div class="error-output"></div>
         <div class="numbers-container">
             <button data-number="1">1</button>
@@ -35,6 +38,7 @@
             <button data-operator="equal">=</button>
         </div>
     </div>
+</div>
 
     
     <script src="app.js"></script>

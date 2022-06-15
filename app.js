@@ -2,6 +2,12 @@ let storedFirstNum = null;
 let storedSecondNum = null;
 let inputNumber, storedOperator, previousKey;
 
+const displayError = document.querySelector(".error-output");
+const displayValue = document.querySelector(".output");
+const numbers = document.querySelectorAll(".numbers-container button");
+const operators = document.querySelectorAll(".operators-container button");
+const displayStoredOperation = document.querySelector(".stored-operation");
+
 function add(firstNum, secondNum) {
     return firstNum + secondNum;
 };
@@ -29,10 +35,19 @@ function operate(firstNum, secondNum, operator) {
     return (displayValue.textContent = result);    
 };
 
-const displayError = document.querySelector(".error-output");
-const displayValue = document.querySelector(".output");
-const numbers = document.querySelectorAll(".numbers-container button");
-const operators = document.querySelectorAll(".operators-container button");
+window.onkeydown = (event) => handleKeyPress(event);
+
+numbers.forEach(button => {
+    button.onclick = handleNumbers;
+});
+
+operators.forEach(button => {
+    button.onclick = handleOperators;
+});
+
+function removeActiveClass() {
+    operators.forEach((button) => button.classList.remove("active"));
+};
 
 function handleNumbers() {
     const number = this.dataset.number;
@@ -43,6 +58,7 @@ function handleNumbers() {
     else if (storedSecondNum == null && storedOperator && storedOperator != "equal") {
         displayValue.textContent = number;
         storedSecondNum = 0;
+        displayStoredOperation.textContent = `${storedFirstNum} ${storedOperator}`;
     } else {
         if (displayValue.textContent.includes(".") && number == ".") {
             return;
@@ -70,6 +86,7 @@ function handleOperators() {
             }
             storedOperator = operator;
             inputNumber = result;
+            displayStoredOperation.textContent = null;
     } 
     else if (operator == "reset") {
             storedOperator = null;
@@ -95,6 +112,7 @@ function handleOperators() {
             if (!storedFirstNum) {
                 storedFirstNum = inputNumber;
             }
+            displayStoredOperation.textContent = `${storedFirstNum} ${storedOperator}`
     }
     };
 
@@ -111,18 +129,4 @@ function handleKeyPress(event) {
     if (event.code == "KeyC") operators.item(0).click();
     if (event.code == "Backspace") operators.item(1).click();
     if (event.key == "=" || event.code == "Enter") operators.item(6).click();  
-};
-
-window.onkeydown = (event) => handleKeyPress(event);
-
-numbers.forEach(button => {
-    button.onclick = handleNumbers;
-});
-
-operators.forEach(button => {
-    button.onclick = handleOperators;
-});
-
-function removeActiveClass() {
-    operators.forEach((button) => button.classList.remove("active"));
 };

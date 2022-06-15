@@ -1,0 +1,113 @@
+:root {
+    font-size: 16px;
+    font-family: system-ui, sans-serif;
+    --operator-active: #e2bc62;
+    --operator-bg: #d79c14;
+    --number-active: #619ed4;
+    --number-bg: #1E88E5; 
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas: 
+    "header header"
+    "numbers operators";
+    place-items: center;
+    height: 300px;
+    border: 2px solid midnightblue;
+    background-color: rgba(20, 16, 16, 0.786);
+    width: 33%;
+    margin: auto;
+}
+
+.output {
+    grid-area: header;
+    width: 90%;
+    padding: 5px 0;
+    text-align: center;
+    background-color: azure;
+    font-size: 2rem;
+    overflow: clip;
+}
+
+.numbers-container {
+    grid-area: numbers;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "one two three"
+    "four five six"
+    "seven eight nine"
+    "zero zero dot";
+    gap: 8px;
+    row-gap: 8px;
+}
+
+button[data-number="0"] {
+    grid-area: zero;
+}
+
+button {
+    border: 0;
+    border-radius: 0.25rem;
+    color: white;
+    font-family: system-ui, sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+
+.numbers-container button {
+    background: var(--number-bg);
+}
+
+.numbers-container button:active {
+    background: var(--number-active);
+}
+
+.operators-container {
+    grid-area: operators;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "reset backspace"
+    "add subtract"
+    "divide multiply"
+    "equals equals";
+    gap: 8px;
+    row-gap: 8px;
+    
+}
+
+button[data-operator="equal"] {
+    grid-area: equals;
+}
+
+.operators-container button {
+    background: var(--operator-bg);
+}
+
+.active {
+    background: var(--operator-active) !important;
+}
+
+.operators-container button:active {
+    background: var(--operator-active);
+}
+
+@media screen and (max-width: 720px) {
+    .calculator {
+        width: 66%;
+    }
+}
+ 
+
+
+

@@ -25,6 +25,7 @@ body {
     height: 300px;
     width: 300px;
     margin: auto;
+    border-radius: 0.5rem;
 }
 
 .output {

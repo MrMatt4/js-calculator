@@ -9,6 +9,7 @@
 
 body {
     box-sizing: border-box;
+    background-color: gainsboro;
 }
 
 .calculator {
@@ -19,10 +20,10 @@ body {
     "header header"
     "numbers operators";
     place-items: center;
-    height: 300px;
     border: 2px solid midnightblue;
     background-color: rgba(20, 16, 16, 0.786);
-    width: 33%;
+    height: 300px;
+    width: 300px;
     margin: auto;
 }
 
@@ -66,7 +67,7 @@ button {
     line-height: 1.2;
     white-space: nowrap;
     text-decoration: none;
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem;
     cursor: pointer;
 }
 
@@ -112,7 +113,11 @@ button[data-operator="equal"] {
 
 @media screen and (max-width: 720px) {
     .calculator {
-        width: 66%;
+        width: 200px;
+    }
+    button {
+        padding: 0.25rem;
+        font-size: 1.1rem;
     }
 }
 
